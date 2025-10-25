@@ -92,8 +92,15 @@ pub struct Instruction {
 
 pub fn create_sanitized_txn(json_txn: RawTxn) -> SanitizedTxn {
     let id = json_txn.result.transaction.signatures[0].to_string();
-    let priority = json_txn.result.meta.fee;
-
+    let fee = json_txn.result.meta.fee;
+    let priority = fee
+        - 5000
+            * json_txn
+                .result
+                .transaction
+                .message
+                .header
+                .numRequiredSignatures as u64;
     // Parse static account keys from the message
     let account_keys = &json_txn.result.transaction.message.accountKeys;
     let header = &json_txn.result.transaction.message.header;
