@@ -24,6 +24,7 @@ fn main() {
     println!("{:?}\n", txn);
     println!("{:?}\n", txn_2);
     println!("{:?}\n", txn_3);
+    println!("{:?}\n", txn_4);
     println!("=========================================================================\n");
 
     let mut queue = PriorityQueue::new(10);
