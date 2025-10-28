@@ -4,7 +4,7 @@ use solana_sdk::pubkey::Pubkey;
 use std::collections::HashSet;
 
 #[derive(Debug, Clone)]
-pub struct SanitizedTxn {
+pub struct SchedulerTxn {
     pub id: String,
 
     pub priority: u64,

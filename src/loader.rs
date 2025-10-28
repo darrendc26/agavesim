@@ -1,6 +1,6 @@
 // parse JSON txn format → SimTransaction
 #![allow(non_snake_case)]
-use crate::types::SanitizedTxn;
+use crate::types::SchedulerTxn;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use solana_sdk::pubkey::Pubkey;
@@ -90,7 +90,7 @@ pub struct Instruction {
     pub stackHeight: Option<u8>,
 }
 
-pub fn create_sanitized_txn(json_txn: RawTxn) -> SanitizedTxn {
+pub fn create_sanitized_txn(json_txn: RawTxn) -> SchedulerTxn {
     let id = json_txn.result.transaction.signatures[0].to_string();
     let fee = json_txn.result.meta.fee;
     let priority = fee
@@ -142,7 +142,7 @@ pub fn create_sanitized_txn(json_txn: RawTxn) -> SanitizedTxn {
 
     let compute_units = json_txn.result.meta.computeUnitsConsumed;
 
-    SanitizedTxn {
+    SchedulerTxn {
         id,
         priority,
         write_lock,
