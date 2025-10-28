@@ -56,6 +56,7 @@ pub struct TxnData {
 pub struct Message {
     #[serde(deserialize_with = "deserialize_pubkeys")]
     pub accountKeys: Vec<Pubkey>,
+    #[serde(default)]
     pub addressTableLookups: Vec<serde_json::Value>,
     pub header: Header,
     pub instructions: Vec<Instruction>,

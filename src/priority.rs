@@ -32,6 +32,7 @@ impl Ord for PriorityTxn {
     }
 }
 
+#[derive(Debug, Clone)]
 pub struct PriorityQueue {
     heap: BinaryHeap<PriorityTxn>,
     insert_counter: u64,
